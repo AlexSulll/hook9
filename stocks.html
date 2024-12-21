@@ -13,7 +13,6 @@
             addForm.addEventListener("submit", (event) => {
                 event.preventDefault();
 
-                // Собираем данные из формы
                 const formData = new FormData(addForm);
                 const newRowData = {
                     storageNumber: formData.get("storage-number"),
@@ -21,10 +20,9 @@
                     volume: formData.get("volume"),
                     density: formData.get("density"),
                     temperature: formData.get("temperature"),
-                    arrivalDate: formatDate(formData.get("arrival-date-new")) // Преобразование формата даты
+                    arrivalDate: formatDate(formData.get("arrival-date-new"))
                 };
 
-                // Добавляем данные в таблицу
                 const newRow = document.createElement("tr");
                 newRow.innerHTML = `
                     <td>${newRowData.storageNumber}</td>
@@ -36,24 +34,18 @@
                 `;
                 tableBody.appendChild(newRow);
 
-                // Сохраняем данные в файл
                 saveToFile();
 
-                // Сбрасываем форму
                 addForm.reset();
             });
 
-            // Преобразование формата даты из YYYY-MM-DD в DD.MM.YYYY
             function formatDate(dateString) {
                 const [year, month, day] = dateString.split("-");
                 return `${day}.${month}.${year}`;
             }
 
-            // Функция для извлечения данных из таблицы и создания файла
             function saveToFile() {
                 let fileContent = "";
-
-                // Извлечение данных из таблицы
                 const rows = tableBody.querySelectorAll("tr");
                 rows.forEach(row => {
                     const cells = row.querySelectorAll("td");
@@ -63,16 +55,12 @@
                     fileContent += `Плотность (г/см³): ${cells[3].innerText}\n`;
                     fileContent += `Температура (°C): ${cells[4].innerText}\n`;
                     fileContent += `Дата поступления: ${cells[5].innerText}\n`;
-                    fileContent += `\n`; // Разделитель между записями
+                    fileContent += `\n`;
                 });
-
-                // Создаем файл
                 const blob = new Blob([fileContent], { type: "text/plain" });
                 const link = document.createElement("a");
                 link.href = URL.createObjectURL(blob);
                 link.download = "data.txt";
-
-                // Автоматически кликаем по ссылке для загрузки файла
                 link.click();
             }
         });
