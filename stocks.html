@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="stocks.css">
+    <title>Запасы полуфабрикатов</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const addForm = document.getElementById("add-form");
+            const tableBody = document.querySelector("table tbody");
+
+            addForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                // Собираем данные из формы
+                const formData = new FormData(addForm);
+                const newRowData = {
+                    storageNumber: formData.get("storage-number"),
+                    productName: formData.get("product-name"),
+                    volume: formData.get("volume"),
+                    density: formData.get("density"),
+                    temperature: formData.get("temperature"),
+                    arrivalDate: formatDate(formData.get("arrival-date-new")) // Преобразование формата даты
+                };
+
+                // Добавляем данные в таблицу
+                const newRow = document.createElement("tr");
+                newRow.innerHTML = `
+                    <td>${newRowData.storageNumber}</td>
+                    <td>${newRowData.productName}</td>
+                    <td>${newRowData.volume}</td>
+                    <td>${newRowData.density}</td>
+                    <td>${newRowData.temperature}</td>
+                    <td>${newRowData.arrivalDate}</td>
+                `;
+                tableBody.appendChild(newRow);
+
+                // Сохраняем данные в файл
+                saveToFile();
+
+                // Сбрасываем форму
+                addForm.reset();
+            });
+
+            // Преобразование формата даты из YYYY-MM-DD в DD.MM.YYYY
+            function formatDate(dateString) {
+                const [year, month, day] = dateString.split("-");
+                return `${day}.${month}.${year}`;
+            }
+
+            // Функция для извлечения данных из таблицы и создания файла
+            function saveToFile() {
+                let fileContent = "";
+
+                // Извлечение данных из таблицы
+                const rows = tableBody.querySelectorAll("tr");
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll("td");
+                    fileContent += `№ Склада/Резервуара: ${cells[0].innerText}\n`;
+                    fileContent += `Наименование продукта: ${cells[1].innerText}\n`;
+                    fileContent += `Объём (л): ${cells[2].innerText}\n`;
+                    fileContent += `Плотность (г/см³): ${cells[3].innerText}\n`;
+                    fileContent += `Температура (°C): ${cells[4].innerText}\n`;
+                    fileContent += `Дата поступления: ${cells[5].innerText}\n`;
+                    fileContent += `\n`; // Разделитель между записями
+                });
+
+                // Создаем файл
+                const blob = new Blob([fileContent], { type: "text/plain" });
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "data.txt";
+
+                // Автоматически кликаем по ссылке для загрузки файла
+                link.click();
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="header">
+    <h1>Запасы полуфабрикатов</h1>
+    <div class="right">
+        <div id="nav">
+            <ul>
+                <li><a href="index.html">Главная страница</a></li>
+                <li><a href="stocks.html">Запасы полуфабрикатов</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="article">
+    <h2>Текущие запасы нефтепродуктов</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+            <tr>
+                <th>№ Склада/Резервуара</th>
+                <th>Наименование продукта</th>
+                <th>Объём (л)</th>
+                <th>Плотность (г/см³)</th>
+                <th>Температура (°C)</th>
+                <th>Дата поступления</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Нефть</td>
+                <td>5000</td>
+                <td>0.89</td>
+                <td>20</td>
+                <td>12.11.2024</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Бензин</td>
+                <td>3000</td>
+                <td>0.74</td>
+                <td>18</td>
+                <td>14.11.2024</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Добавить новое поступление</h2>
+    <div class="add-data">
+        <form id="add-form">
+            <label for="storage-number">№ Склада/Резервуара:</label>
+            <input type="text" id="storage-number" name="storage-number" required>
+
+            <label for="product-name">Наименование продукта:</label>
+            <input type="text" id="product-name" name="product-name" required>
+
+            <label for="volume">Объём (л):</label>
+            <input type="number" id="volume" name="volume" step="0.01" required>
+
+            <label for="density">Плотность (г/см³):</label>
+            <input type="number" id="density" name="density" step="0.001" required>
+
+            <label for="temperature">Температура (°C):</label>
+            <input type="number" id="temperature" name="temperature" step="0.1" required>
+
+            <label for="arrival-date-new">Дата поступления:</label>
+            <input type="date" id="arrival-date-new" name="arrival-date-new" required>
+
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+</div>
+
+<div id="footer">
+    <p>Contacts: hlebusheck.tv@gmail.com</p>
+    <p>Copyright © KaruNet.com, 2024</p>
+</div>
+</body>
+</html>

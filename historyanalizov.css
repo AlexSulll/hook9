@@ -1,0 +1,237 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+/* Заголовок */
+#header {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 15px 0;
+}
+
+#header h1 {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Навигация */
+#nav {
+    background-color: #eee;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#nav li {
+    margin: 0;
+}
+
+#nav a {
+    display: block;
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-right: 1px solid #ccc;
+    font-size: 14px;
+}
+
+#nav li:last-child a {
+    border-right: none;
+}
+
+#nav a:hover {
+    font-weight: bold;
+}
+
+/* Основной контент */
+.wrapper {
+    max-width: 100%;
+    margin: 15px auto;
+    padding: 10px;
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Фильтры */
+#filters {
+    margin-bottom: 15px;
+}
+
+#filters h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#filter-form label {
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+}
+
+#filter-form input,
+#filter-form button {
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+#filter-form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#filter-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Таблица */
+#history-table {
+    margin-top: 15px;
+}
+
+#history-table h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    overflow-x: auto;
+    display: block;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-size: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+table th, table td {
+    white-space: nowrap;
+}
+
+/* Футер */
+#footer {
+    border-top: 1px solid #ccc;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f4f4f4;
+    font-size: 0.7em;
+}
+
+/* Адаптивные стили для телефона */
+@media (max-width: 430px) {
+    /* Заголовок */
+    #header h1 {
+        font-size: 18px;
+        padding: 10px 0;
+    }
+
+    /* Навигация */
+    #nav ul {
+        flex-direction: column;
+    }
+
+    #nav li {
+        width: 100%;
+    }
+
+    #nav a {
+        text-align: center;
+        padding: 10px;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #nav li:last-child a {
+        border-bottom: none;
+    }
+
+    /* Фильтры */
+    #filters h2 {
+        font-size: 16px;
+    }
+
+    #filter-form {
+        gap: 8px;
+    }
+
+    #filter-form label {
+        font-size: 12px;
+    }
+
+    #filter-form input,
+    #filter-form button {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    #filter-form button {
+        padding: 8px;
+    }
+
+    /* Таблица */
+    #history-table h2 {
+        font-size: 16px;
+    }
+
+    table th,
+    table td {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    /* Футер */
+    #footer p {
+        font-size: 0.6em;
+    }
+}

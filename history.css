@@ -1,0 +1,162 @@
+/* Общие настройки */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+/* Хедер */
+#header {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: left;
+}
+
+#header h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* Навигация */
+#nav {
+    background-color: #f4f4f4;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+#nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+#nav li {
+    margin: 0;
+}
+
+#nav a {
+    display: inline-block;
+    color: black;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#nav a:hover {
+    font-weight: bold;
+    background-color: #eee;
+}
+
+/* Основной контент */
+.wrapper {
+    padding: 15px;
+}
+
+#filters {
+    margin-bottom: 20px;
+}
+
+#filters h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#filters form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#filters input,
+#filters select,
+#filters button {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#filters button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#filters button:hover {
+    background-color: #0056b3;
+}
+
+/* История */
+#history h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#history table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#history th,
+#history td {
+    padding: 8px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#history thead {
+    background-color: #007BFF;
+    color: white;
+}
+
+#history tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Футер */
+#footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f4f4f4;
+    font-size: 12px;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    #header h1 {
+        font-size: 16px;
+    }
+
+    #nav a {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    #filters h2,
+    #history h2 {
+        font-size: 14px;
+    }
+
+    #history th,
+    #history td {
+        font-size: 10px;
+        padding: 6px;
+    }
+}

@@ -1,0 +1,309 @@
+* {
+    box-sizing: border-box;
+}
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, ul, li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+body {
+    font-family: Verdana, Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+.wrapper, #nav, #header, #footer {
+    min-width: 320px;
+}
+#header {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: left;
+}
+#header h1 {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#nav {
+    background-color: #eee;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+#nav ul {
+    display: flex;
+    justify-content: left;
+}
+#nav li {
+    list-style: none;
+    margin: 0 10px;
+}
+#nav a {
+    display: block;
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-right: 1px solid #ccc;
+}
+#nav li:last-child a {
+    border-right: none;
+}
+#nav a:hover {
+    font-weight: bold;
+}
+.wrapper {
+    background-color: #f7f7f7;
+}
+#footer {
+    border-top: 1px solid #ccc;
+    font-size: 0.8em;
+    text-align: center;
+    padding: 10px 10px 30px 10px;
+}
+#nav ul, .wrapper, #footer p
+{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+h1
+{
+    margin-bottom: 10px;
+}
+/* Стили для статьи */
+#article {
+    background-color: #fafafa;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    margin: 10px auto;
+    padding: 15px;
+    max-width: 95%;
+    font-size: 0.9em;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+#article h2 {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+#article p {
+    line-height: 150%;
+    margin-bottom: 15px;
+}
+#article:after {
+    clear: both;
+    display: table;
+    content: '';
+}
+
+/* Стили для фильтров */
+.filters form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.filters label {
+    margin-right: 10px;
+}
+.filters input,
+.filters select,
+.filters button {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.filters button {
+    background-color: #005599;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.filters button:hover {
+    background-color: #0077cc;
+}
+
+/* Стили для таблицы */
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+}
+.table-container table th,
+.table-container table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+.table-container table th {
+    background-color: #005599;
+    color: white;
+}
+.table-container table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.table-container table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Стили для формы добавления */
+.add-data form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.add-data label {
+    margin-bottom: 5px;
+}
+.add-data input,
+.add-data button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.add-data button {
+    background-color: #005599;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.add-data button:hover {
+    background-color: #0077cc;
+}
+
+/* Стили для отчетов */
+.export {
+    margin-top: 20px;
+    text-align: center;
+}
+.export a {
+    text-decoration: none;
+    color: #005599;
+    font-weight: bold;
+    margin: 0 10px;
+}
+.export a:hover {
+    text-decoration: underline;
+}
+
+/* Подсказки */
+[data-hint] {
+    position: relative;
+    cursor: help;
+}
+[data-hint]::after {
+    opacity: 0;
+    width: max-content;
+    color: #FFFFFF;
+    background-color: rgba(0,0,0,.7);
+    border-radius: 6px;
+    padding: 10px;
+    content: attr(data-hint);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1em;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+[data-hint]:hover::after {
+    opacity: 1;
+}
+.hint-bottom::after {
+    top: auto;
+    bottom: -5px;
+    transform: translate(-50%, 100%);
+}
+.table-wrapper {
+    width: 100%; /* Таблица адаптируется к ширине родителя */
+    overflow-x: auto; /* Горизонтальная прокрутка */
+    -webkit-overflow-scrolling: touch; /* Улучшение для мобильных устройств */
+    border: 1px solid #ccc; /* Для выделения границ */
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.table-wrapper table {
+    width: 100%; /* Таблица займет всю ширину контейнера */
+    border-collapse: collapse;
+    min-width: 600px; /* Минимальная ширина для структуры таблицы */
+}
+
+.table-wrapper th,
+.table-wrapper td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.table-wrapper th {
+    background-color: #005599;
+    color: #fff;
+}
+
+.table-wrapper tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-wrapper tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+@media (max-width: 430px) {
+    body {
+        font-size: 14px;
+    }
+
+    #header h1 {
+        font-size: 1.2em;
+    }
+
+    #nav ul {
+        flex-wrap: wrap;
+    }
+
+    .filters form,
+    .add-data form {
+        flex-direction: column;
+    }
+
+    .table-container table {
+        font-size: 0.8em;
+    }
+
+    .table-container th,
+    .table-container td {
+        padding: 8px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #article {
+        padding: 10px;
+    }
+
+    .filters label {
+        display: block;
+    }
+    .table-wrapper table {
+        font-size: 0.8em;
+    }
+    .table-wrapper th, .table-wrapper td {
+        padding: 5px;
+    }
+}
