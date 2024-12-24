@@ -49,12 +49,13 @@
                 const rows = tableBody.querySelectorAll("tr");
                 rows.forEach(row => {
                     const cells = row.querySelectorAll("td");
-                    fileContent += `№ Склада/Резервуара: ${cells[0].innerText}\n`;
-                    fileContent += `Наименование продукта: ${cells[1].innerText}\n`;
-                    fileContent += `Объём (л): ${cells[2].innerText}\n`;
-                    fileContent += `Плотность (г/см³): ${cells[3].innerText}\n`;
-                    fileContent += `Температура (°C): ${cells[4].innerText}\n`;
-                    fileContent += `Дата поступления: ${cells[5].innerText}\n`;
+                    fileContent += `${cells[0].innerText},`;
+                    fileContent += `${cells[1].innerText},`;
+                    fileContent += `${cells[2].innerText},`;
+                    fileContent += `${cells[3].innerText},`;
+                    fileContent += `${cells[4].innerText},`;
+                    fileContent += `${cells[5].innerText}`;
+                    fileContent += `\n`;
                     fileContent += `\n`;
                 });
                 const blob = new Blob([fileContent], { type: "text/plain" });
